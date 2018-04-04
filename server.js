@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 var jwt = require('jsonwebtoken');
 const config = require('./app/config');
 const routes = require('./app/routes/routes');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/client/dist'));
 app.set('views', __dirname + '/views');

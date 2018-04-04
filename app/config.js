@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000/api/'; // Local Server
+const URL = 'http://localhost:8080/api/'; // Local Server
 
 module.exports = {
     'secret': 'thisismysecret',
