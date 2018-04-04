@@ -1,0 +1,38 @@
+.number-input{
+	width: 75%;
+	float: left;
+	border-radius: 0px;
+}
+.coupon-input{
+	width: 50%;
+	float: left;
+	margin-right: 1%;
+	border-radius: 0px;
+}
+.checkout-button{
+	float: right;
+	border-radius: 0px;
+    margin-right: 1%;
+}
+.continue-button{
+	float: right;
+	border-radius: 0px;
+	color: #fff;
+    background-color: #952424;
+    border-color: #952424;
+}
+.apply-button{
+	border-radius: 0px;
+}
+.reset-button{
+	background: red;
+	color: #f2f2f2;
+}
+.empty-cart-checkout{
+    width: 100%;
+    text-align: center;
+    padding: 30px 10px 30px 10px;
+    background: transparent;
+    color: red;
+    margin-left: 50%;
+}

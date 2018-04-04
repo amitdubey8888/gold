@@ -1,0 +1,199 @@
+<div class="main-profile-section">
+	<div class="left-side">
+		<ul class="left-side-ul">
+	        <li class="left-side-li" (click)="dashboard()">
+	            <a href="javascript:void(0)" class="left-side-a"><p class="left-side-p">Dashboard</p></a>
+	        </li>
+	        <li class="left-side-li" (click)="myorder()">
+	            <a href="javascript:void(0)" class="left-side-a"><p class="left-side-p">My Orders</p></a>
+	        </li>
+	        <li class="left-side-li" (click)="profile()">
+	            <a href="javascript:void(0)" class="left-side-a"><p class="left-side-p">My Details</p></a>
+	        </li>
+	        <li class="left-side-li" (click)="changepassword()">
+	            <a href="javascript:void(0)" class="left-side-a"><p class="left-side-p">Password</p></a>
+	        </li>
+	        <li class="left-side-li" (click)="logout()">
+	            <a href="javascript:void(0)" class="left-side-a"><p class="left-side-p">Logout</p></a>
+	        </li>
+	    </ul>
+	</div>
+	<div class="right-side">
+		<div class="dashboard" *ngIf="dashboardValue">
+			<div class="container">
+				<h4 class="text-center" style="margin-bottom:20px;color:#888;">Recent Order</h4>
+				<table class="table table-striped">
+				  <thead class="table-heading-th">
+				    <tr>
+				      <th>OrderID</th>
+				      <th>Items</th>
+				      <th>Name</th>
+				      <th>Quantity</th>
+				      <th>Amount</th>
+				      <th>Total</th>
+				      <th>Date</th>
+				      <th>Status</th>
+				    </tr>
+				  </thead>
+				  <tbody class="table-body-th">
+				    <tr *ngFor="let last of myLastOrder" style="margin-bottom:20px;">
+				      <th>#{{last._id}}</th>
+				      <th>{{last.gold}}</th>
+				      <th>{{last.rsName}}</th>
+				      <th>{{last.quantity}}</th>
+				      <th>{{last.amount}}</th>
+				      <th>{{last.quantity*last.amount}}</th>
+				      <th>{{last.createdAt}}</th>
+				      <th><button class="btn btn-success details-button">Successful</button></th>
+				    </tr>
+				  </tbody>
+				  <!-- <tbody *ngIf="this.common.cartLength==0">
+		            <p class="empty-cart-checkout">Sorry, You have not purchased any item.</p>
+		          </tbody> -->
+				</table>
+			</div>
+		</div>
+		<div class="my-order" *ngIf="myorderValue">
+			<div class="container">
+				<h4 class="text-center" style="margin-bottom:20px;color:#888;">Order History</h4>
+				<table class="table table-striped">
+				  <thead class="table-heading-th">
+				    <tr>
+				      <th>OrderID</th>
+				      <th>Items</th>
+				      <th>Name</th>
+				      <th>Quantity</th>
+				      <th>Amount</th>
+				      <th>Total</th>
+				      <th>Date</th>
+				      <th>Status</th>
+				    </tr>
+				  </thead>
+				  <tbody class="table-body-th">
+				    <tr *ngFor="let order of myOrders" style="margin-bottom:20px;">
+				      <th>#{{order._id}}</th>
+				      <th>{{order.gold}}</th>
+				      <th>{{order.rsName}}</th>
+				      <th>{{order.quantity}}</th>
+				      <th>{{order.amount}}</th>
+				      <th>{{order.quantity*order.amount}}</th>
+				      <th>{{order.createdAt}}</th>
+				      <th><button class="btn btn-success details-button">Successful</button></th>
+				    </tr>
+				  </tbody>
+				 <!--  <tbody *ngIf="this.common.cartLength==0">
+		            <p class="empty-cart-checkout">Sorry, You have not purchased any item.</p>
+		          </tbody> -->
+				</table>
+			</div>
+		</div>
+		<div class="my-details" *ngIf="profileValue">
+			<div class="container">
+				<div class='row'>
+				  <div class='col-sm-8 col-md-8 col-lg-8 profile-section'>
+				    <h2 style="text-align: center;">My Profile</h2>
+				    <form [formGroup]="profileForm" (ngSubmit)="profileForm.valid && updateProfile(profileForm.value)" novalidate>
+				      <h4 style="padding: 10px 0px 10px 0px;">Personal Details</h4>
+				      <fieldset class="form-group">
+				        <label for="name">Name</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.name" formControlName="name">
+				        <div class='form-text error' *ngIf='profileForm.controls.name.touched'>
+				          <div *ngIf="profileForm.controls.name.hasError('required')">Name is required.</div>
+				        </div>
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="e-mail">Email</label>
+				        <input type="email" class="form-control" [(ngModel)]="editUser.email" formControlName="email">
+				        <div class="form-text error" *ngIf="profileForm.controls.email.touched">
+				          <div *ngIf="profileForm.controls.email.hasError('required')">Email is required.</div>
+				          <div *ngIf="profileForm.controls.email.hasError('invalidEmail')">Email is invalid.</div>
+				        </div>
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="phone">Phone</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.phone" formControlName="phone">
+				        <div class='form-text error' *ngIf="profileForm.controls.phone.touched">
+				          <div *ngIf="profileForm.controls.phone.hasError('required')">Phone number is required.</div>
+				          <div *ngIf="profileForm.controls.phone.hasError('notNumeric')">Phone number must be number.</div>
+				        </div> 
+				      </fieldset>
+				      <h4 style="padding: 10px 0px 10px 0px;">Address</h4>
+				      <fieldset class="form-group">
+				        <label for="address1">Address 1</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.address1" formControlName="address1">
+				        <div class='form-text error' *ngIf="profileForm.controls.address1.touched">
+				          <div *ngIf="profileForm.controls.address1.hasError('required')">Address is required.</div>
+				        </div> 
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="address2">Address 2</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.address2" formControlName="address2">
+				        <div class='form-text error' *ngIf="profileForm.controls.address2.touched">
+				          <div *ngIf="profileForm.controls.address2.hasError('required')">Address is required.</div>
+				        </div> 
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="pincode">Pincode</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.pincode" formControlName="pincode">
+				        <div class='form-text error' *ngIf="profileForm.controls.pincode.touched">
+				          <div *ngIf="profileForm.controls.pincode.hasError('required')">Pincode is required.</div>
+				          <div *ngIf="profileForm.controls.pincode.hasError('notNumeric')">Pincode must be number.</div>
+				        </div> 
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="city">City</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.city" formControlName="city">
+				        <div class='form-text error' *ngIf="profileForm.controls.city.touched">
+				          <div *ngIf="profileForm.controls.city.hasError('required')">City is required.</div>
+				        </div> 
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="state">State</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.state" formControlName="state">
+				        <div class='form-text error' *ngIf="profileForm.controls.state.touched">
+				          <div *ngIf="profileForm.controls.state.hasError('required')">State is required.</div>
+				        </div> 
+				      </fieldset>
+				      <fieldset class="form-group">
+				        <label for="country">Country</label>
+				        <input type="text" class="form-control" [(ngModel)]="editUser.country" formControlName="country">
+				        <div class='form-text error' *ngIf="profileForm.controls.country.touched">
+				          <div *ngIf="profileForm.controls.country.hasError('required')">Country is required.</div>
+				        </div> 
+				      </fieldset>
+				      <button class='btn btn-primary' type='submit' [disabled]='!profileForm.valid'>Save Profile</button>
+				    </form>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="change-password" *ngIf="changeValue">
+			<div class="container">
+				<div class='row'>
+				  <div class='col-sm-8 col-md-8 col-lg-8 changepassword-section'>
+				    <h2 style="text-align: center;">Change Password</h2>
+				    <form [formGroup]="changepasswordForm" (ngSubmit)="changepasswordForm.valid && changePassword(changepasswordForm.value)" novalidate>
+						<fieldset class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" minlength='6' formControlName="password">
+							<div class='form-text error' *ngIf="changepasswordForm.controls.password.touched">
+							<div *ngIf="changepasswordForm.controls.password.hasError('required')">Password is required.</div>
+							<div *ngIf="changepasswordForm.controls.password.hasError('minlength')">Password isn't long enough.</div>
+							</div>
+						</fieldset>
+						<fieldset class="form-group">
+							<label for="confirm-password">Confirm Password</label>
+							<input type="password" class="form-control" value="" formControlName="confirmPassword">
+							<div class='form-text error' *ngIf="changepasswordForm.controls.confirmPassword.touched">
+							<div *ngIf="changepasswordForm.controls.confirmPassword.hasError('required')">Confirm Password is required.</div>
+							<div *ngIf="changepasswordForm.hasError('mismatchedPasswords')">Passwords do not match.</div>
+							</div>
+						</fieldset>
+						<button class='btn btn-primary' type='submit' [disabled]='!changepasswordForm.valid'>Change Password</button>
+				    </form>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

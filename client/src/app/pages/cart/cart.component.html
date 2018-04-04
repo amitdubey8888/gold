@@ -1,0 +1,59 @@
+<div class="container">
+	<br>
+	<div class="row cart-row">
+		<table class="table table-striped">
+		  <thead>
+		    <tr style="background:#f5f5f5;">
+		      <th>S.No.</th>
+		      <th>ITEMS</th>
+		      <th>PRICE</th>
+		      <th>QUANTITY</th>
+		      <th>TOTAL</th>
+		    </tr>
+		  </thead>
+		  <tbody *ngIf="this.common.cartLength>0">
+		  	<tr></tr>
+		    <tr *ngFor="let item of cartItems; let i=index;">
+		      <td>{{i+1}}.</td>
+		      <td>
+		      	EOC RUNESCAPE GOLD, {{item.gold}}<br>
+		      	<small>Item#: <span [innerHTML]="getItemName(item.gold)"></span></small><br>
+		      	<small>RS Display Name: {{item.rsName}}</small>
+		  	  </td>
+		      <td>${{item.amount}}</td>
+		      <td style="width:15%;"><input type="number" name="quantity" class="form-control number-input" value="{{item.quantity}}" min="1" [(ngModel)]="item.quantity" (click)="updateValue()"></td>
+		      <td>${{item.quantity * item.amount}}</td>
+		    </tr>
+		  </tbody>
+		  <tbody *ngIf="this.common.cartLength==0">
+            <p class="empty-cart-checkout">Sorry, You do not have any item in your cart.</p>
+          </tbody>
+		</table>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-6 col-md-6 col-lg-6" style="padding-left: 0px;">
+			<h5 style="width:100%;padding:10px;background:#f5f5f5;">PROMOTIONS</h5>
+			<b>Coupon</b><br>
+			<input type="text" class="form-control coupon-input" #coupon [(ngModel)]="couponName">
+			<button *ngIf="!counter" type="submit" [disabled]="!this.common.cartLength" class="btn btn-small apply-button" (click)="applycoupon(coupon.value)">Apply</button>
+			<button *ngIf="counter" type="submit" class="btn btn-small reset-button" (click)="resetcoupon()">Remove <i class="fa fa-times"></i></button>
+			<br>
+			<small style="color:red;" *ngIf="invalidCoupon">Invalid coupon. Please try with another.</small>
+			<small style="color:red;" *ngIf="validCoupon">Coupon code applied successfully. Procede to Checkout!</small>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<h5 style="width:100%; padding:10px;background:#f5f5f5;">ORDER ESTIMATE</h5>
+			<p style="width:50%;float:left;">Sub-Total</p>
+			<p style="width:50%;float:right;text-align:right;">${{subTotal}}</p>
+			<p style="width:50%;float:left;">Discount</p>
+			<p style="width:50%;float:right;text-align:right;">- ${{discount}}</p>
+			<p style="width:50%;float:left;">Total</p>
+			<p style="width:50%;float:right;text-align:right;">${{finalPrice}}</p>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<button type="submit" [disabled]="!this.common.cartLength" class="btn btn-small continue-button" (click)="checkout()"><i class="fa fa-cart"></i> CHECKOUT</button>
+			<button type="submit" class="btn btn-small checkout-button" (click)="continue()">CONTINUE SHOPPING</button>
+		</div>
+	</div>
+</div>

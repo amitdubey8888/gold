@@ -1,0 +1,372 @@
+<div class="my-loading" *ngIf="this.common.display.loader">
+  <div class="loading-bg">
+    <loaders-css [loader]="'line-spin-fade-loader'" [loaderClass]="'circle-loader'"></loaders-css>
+  </div>
+</div>
+<!-- Top Header Start -->
+<!-- <div class="top-header">
+    <div class="row top-header-row">
+        <div class="col-sm-3 col-md-3 col-lg-3" style="margin:0px; padding:0px;">
+        <a href="#" class="top-header-a" style="font-size:40px;">Appwallaz</a>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3" style="margin:0px; padding:0px;">
+        <ul class="top-header-ul">
+            <li class="top-header-li">
+            <a [routerLink]="['/bulkorder']" class="top-header-a">Bulk Orders</a>
+            </li>
+            <li class="top-header-li">
+            <a [routerLink]="['/faq']" class="top-header-a">FAQ</a>
+            </li>
+        </ul>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3" style="margin:0px; padding:0px;"></div>
+        <div class="col-sm-3 col-md-3 col-lg-3" style="margin:0px; padding:0px;">
+            <ul class="top-header-ul">
+                <li class="top-header-li">
+                    <a href="#" class="top-header-a">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </li>
+                <li class="top-header-li" (click)="openLoginModal(loginModal)" *ngIf="!this.common.isLoggedIn">
+                    <a href="#" class="top-header-a">Login</a>
+                </li>
+                <li class="top-header-li" *ngIf="this.common.isLoggedIn">
+                    <a [routerLink]="['/profile']" class="top-header-a">Account</a>
+                </li>
+                <li class="top-header-li" *ngIf="!this.common.cartLengthTrue">
+                    <a href="#" class="top-header-a">Cart</a>
+                </li>
+                <li class="top-header-li" *ngIf="this.common.cartLengthTrue" (click)="openCartModal(cartModel)">
+                    <a href="#" class="top-header-a"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{this.common.cartLength}}</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+<!-- Top Header Start -->
+<!-- Bottom Header Start -->
+<div class="bottom-header">
+    <div class="row bottom-header-row">
+        <!-- <div class="col-sm-1 col-md-1 col-lg-1" style="margin:0px; padding:0px;">Logo</div> -->
+        <!-- <div class="col-sm-10 col-md-10 col-lg-10" style="margin:0px; padding:0px;"> -->
+            <ul class="menubar-ul">
+                <li ngbDropdown class="dropdown menubar-li">
+                    <a href="#" class="dropdown-toggle disabled" id="dropdownBasic1" ngbDropdownToggle>RS3 GOLD</a>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu display-ul" role="menu">
+                        <li class="display-li" style="border-right:1px solid #f2f2f2;">
+                            <a href="javascript:void(0)" class="RS-CS" (click)="buyRS3('Home / RS3 Gold / Buy RS3 Gold')">
+                                <p>BUY</p>
+                                <p class="buy-sale-desc">RS3 GOLD</p>
+                            </a>
+                        </li>
+                        <li class="display-li">
+                            <a href="javascript:void(0)" class="RS-CS" (click)="saleRS3('Home / RS3 Gold / Sale RS3 Gold')">
+                                <p>SELL</p>
+                                <p class="buy-sale-desc">RS3 GOLD</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li ngbDropdown class="dropdown menubar-li">
+                    <a href="#" class="dropdown-toggle disabled" id="dropdownBasic1" ngbDropdownToggle>RS 2007 GOLD</a>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu display-ul" role="menu">
+                        <li class="display-li" style="border-right:1px solid #f2f2f2;">
+                        <a href="javascript:void(0)" class="RS-CS" (click)="buyRS2007('Home / RS 2007 Gold / Buy RS 2007 Gold')">
+                            <p>BUY</p>
+                            <p class="buy-sale-desc">RS 2007 GOLD</p>
+                        </a>
+                        </li>
+                        <li class="display-li">
+                        <a href="javascript:void(0)" class="RS-CS" (click)="saleRS2007('Home / RS 2007 Gold / Sale RS 2007 Gold')">
+                            <p>SELL</p>
+                            <p class="buy-sale-desc">RS 2007 GOLD</p>
+                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menubar-li">
+                    <a [routerLink]="['/runescape']">RUNESCAPE ACCOUNTS</a>
+                </li>
+                <li ngbDropdown class="dropdown menubar-li">
+                    <a href="#" class="dropdown-toggle disabled" id="dropdownBasic1" ngbDropdownToggle>CS:GO</a>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu display-ul" role="menu">
+                        <li class="display-li" style="border-right:1px solid #f2f2f2;">
+                        <a href="javascript:void(0)" class="RS-CS" (click)="keyCSGO('Home / CS:GO / CS:GO Keys')">
+                            <p class="key-skin">CS:GO</p>
+                            <p class="key-skins">KEYS</p>
+                        </a>
+                        </li>
+                        <li class="display-li">
+                        <a href="javascript:void(0)" class="RS-CS" (click)="skinCSGO('Home / CS:GO / CS:GO Skins')">
+                            <p class="key-skin">CS:GO</p>
+                            <p class="key-skins">SKINS</p>
+                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menubar-li" (click)="openLoginModal(loginModal)" *ngIf="!this.common.isLoggedIn">
+                    <a href="#" class="top-header-a">Login</a>
+                </li>
+                <li class="menubar-li" *ngIf="this.common.isLoggedIn">
+                    <a [routerLink]="['/profile']" class="top-header-a">Account</a>
+                </li>
+                <li class="menubar-li" *ngIf="!this.common.cartLengthTrue">
+                    <a href="#" class="top-header-a">Cart</a>
+                </li>
+                <li class="menubar-li" *ngIf="this.common.cartLengthTrue" (click)="openCartModal(cartModel)">
+                    <a href="#" class="top-header-a"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{this.common.cartLength}}</span></a>
+                </li>
+            </ul>
+        <!-- </div> -->
+        <!-- <div class="col-sm-1 col-md-1 col-lg-1" style="margin:0px; padding:0px;">
+            <ul class="top-header-ul">
+                <li class="top-header-li" (click)="openLoginModal(loginModal)" *ngIf="!this.common.isLoggedIn">
+                    <a href="#" class="top-header-a">Login</a>
+                </li>
+                <li class="top-header-li" *ngIf="this.common.isLoggedIn">
+                    <a [routerLink]="['/profile']" class="top-header-a">Account</a>
+                </li>
+                <li class="top-header-li" *ngIf="!this.common.cartLengthTrue">
+                    <a href="#" class="top-header-a">Cart</a>
+                </li>
+                <li class="top-header-li" *ngIf="this.common.cartLengthTrue" (click)="openCartModal(cartModel)">
+                    <a href="#" class="top-header-a"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{this.common.cartLength}}</span></a>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+<!-- Bottom Header End -->
+<router-outlet></router-outlet>
+
+<!-- Social Bar Start -->
+<aside id="sticky-social">
+<ul>
+    <li>
+    <a href="https://www.facebook.com" class="entypo-facebook" target="_blank">
+        <span>Facebook</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://twitter.com" class="entypo-twitter" target="_blank">
+        <span>Twitter</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://plus.google.com/" class="entypo-gplus" target="_blank">
+        <span>Google+</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://www.instagram.com" class="entypo-instagrem" target="_blank">
+        <span>Instagram</span>
+    </a>
+    </li>
+    <li>
+    <a href="https://in.pinterest.com" class="entypo-pinterest" target="_blank">
+        <span>Pinterest</span>
+    </a>
+    </li>
+</ul>
+</aside>
+<!-- Social Bar End -->
+
+<!--Login Signup Model Start-->
+<ng-template #loginModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" *ngIf="loginValue">Login</h4>
+        <h4 class="modal-title" *ngIf="signupValue">Register</h4>
+        <h4 class="modal-title" *ngIf="forgotValue">Forgot Password</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form *ngIf="loginValue" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login(loginForm.value)" novalidate>
+             <fieldset class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <div class="form-text error" *ngIf="loginForm.controls.email.touched">
+                  <div *ngIf="loginForm.controls.email.hasError('required')">Email is required.</div>
+                  <div *ngIf="loginForm.controls.email.hasError('invalidEmail')">Email is invalid.</div>
+                </div>
+              </fieldset>
+            <fieldset class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" minlength='6' formControlName="password">
+                <div class='form-text error' *ngIf="loginForm.controls.password.touched">
+                  <div *ngIf="loginForm.controls.password.hasError('required')">Password is required.</div>
+                  <div *ngIf="loginForm.controls.password.hasError('minlength')">Password isn't long enough.</div>
+                </div>
+            </fieldset>
+            <button type="submit" class="bt btn-primary btn-block" style="margin-top: 6%;padding:5px;font-size:large;" [disabled]='!loginForm.valid'>Login</button>
+        </form>
+
+        <form *ngIf="signupValue" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register(registerForm.value)" novalidate>
+          <h4 style="padding: 10px 0px 10px 0px;">Personal Details</h4>
+          <fieldset class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" value="" formControlName="name">
+            <div class='form-text error' *ngIf='registerForm.controls.name.touched'>
+              <div *ngIf="registerForm.controls.name.hasError('required')">Name is required.</div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="e-mail">Email</label>
+            <input type="email" class="form-control" value="" formControlName="email">
+            <div class="form-text error" *ngIf="registerForm.controls.email.touched">
+              <div *ngIf="registerForm.controls.email.hasError('required')">Email is required.</div>
+              <div *ngIf="registerForm.controls.email.hasError('invalidEmail')">Email is invalid.</div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" value="" formControlName="phone">
+            <div class='form-text error' *ngIf="registerForm.controls.phone.touched">
+              <div *ngIf="registerForm.controls.phone.hasError('required')">Phone number is required.</div>
+              <div *ngIf="registerForm.controls.phone.hasError('notNumeric')">Phone number must be number.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" minlength='6' formControlName="password">
+            <div class='form-text error' *ngIf="registerForm.controls.password.touched">
+                <div *ngIf="registerForm.controls.password.hasError('required')">Password is required.</div>
+                <div *ngIf="registerForm.controls.password.hasError('minlength')">Password isn't long enough.</div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" class="form-control" value="" formControlName="confirmPassword">
+            <div class='form-text error' *ngIf="registerForm.controls.confirmPassword.touched">
+                <div *ngIf="registerForm.controls.confirmPassword.hasError('required')">Confirm Password is required.</div>
+                <div *ngIf="registerForm.hasError('mismatchedPasswords')">Passwords do not match.</div>
+            </div>
+          </fieldset>
+          <h4 style="padding: 10px 0px 10px 0px;">Address</h4>
+          <fieldset class="form-group">
+            <label for="address1">Address 1</label>
+            <input type="text" class="form-control" value="" formControlName="address1">
+            <div class='form-text error' *ngIf="registerForm.controls.address1.touched">
+              <div *ngIf="registerForm.controls.address1.hasError('required')">Address is required.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="address2">Address 2</label>
+            <input type="text" class="form-control" value="" formControlName="address2">
+            <div class='form-text error' *ngIf="registerForm.controls.address2.touched">
+              <div *ngIf="registerForm.controls.address2.hasError('required')">Address is required.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="pincode">Pincode</label>
+            <input type="text" class="form-control" value="" formControlName="pincode">
+            <div class='form-text error' *ngIf="registerForm.controls.pincode.touched">
+              <div *ngIf="registerForm.controls.pincode.hasError('required')">Pincode is required.</div>
+              <div *ngIf="registerForm.controls.pincode.hasError('notNumeric')">Pincode must be number.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" value="" formControlName="city">
+            <div class='form-text error' *ngIf="registerForm.controls.city.touched">
+              <div *ngIf="registerForm.controls.city.hasError('required')">City is required.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" value="" formControlName="state">
+            <div class='form-text error' *ngIf="registerForm.controls.state.touched">
+              <div *ngIf="registerForm.controls.state.hasError('required')">State is required.</div>
+            </div> 
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" value="" formControlName="country">
+            <div class='form-text error' *ngIf="registerForm.controls.country.touched">
+              <div *ngIf="registerForm.controls.country.hasError('required')">Country is required.</div>
+            </div> 
+          </fieldset>
+          <small style="color:red;" *ngIf='!registerForm.valid'>Invalid form, Please fill all fields correctally.</small><br>
+          <button type="submit" class="bt btn-primary btn-block" style="margin-top: 6%;padding:5px;font-size:large;" [disabled]='!registerForm.valid'>Register</button>
+        </form>
+
+        <form *ngIf="forgotValue" [formGroup]="forgotForm" (ngSubmit)="forgotForm.valid && forgot(forgotForm.value)" novalidate>
+        <fieldset class="form-group">
+            <label for="e-mail">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            <div class="form-text error" *ngIf="forgotForm.controls.email.touched">
+              <div *ngIf="forgotForm.controls.email.hasError('required')">Email is required.</div>
+              <div *ngIf="forgotForm.controls.email.hasError('invalidEmail')">Email is invalid.</div>
+            </div>
+        </fieldset>
+        <button type="submit" class="bt btn-primary btn-block" style="margin-top:6%;padding:5px;font-size:large;" [disabled]='!forgotForm.valid'>Submit</button>
+        <br>
+        </form>
+        <div class="form-group" *ngIf="loginValue || signupValue">
+        <p (click)="forgotModal()" style="margin-top: 5%;">
+            <a href="javascript:void(0)" style="color:#f2f2f2;text-decoration:none;">Forgot Password?</a>
+        </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <h4 (click)="logModal()" *ngIf="signupValue || forgotValue">
+        <a href="javascript:void(0)" style="color:#f2f2f2;text-decoration:none;">Login</a>
+        <span *ngIf="forgotValue">|</span>
+        </h4>
+        <h4 (click)="regModal()" *ngIf="loginValue || forgotValue">
+        <a href="javascript:void(0)" style="color:#f2f2f2;text-decoration:none;">Register</a>
+        </h4>
+    </div>
+</ng-template>
+<!--Login Signup Model End-->
+
+<!-- Cart Model Start -->
+<ng-template #cartModel let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title text-center">Cart</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+        <div class="row cart-row">
+            <table class="table table-striped">
+              <thead *ngIf="this.common.cartLength>0">
+                <tr>
+                  <th>ITEMS</th>
+                  <th>PRICE</th>
+                  <th>QUANTITY</th>
+                  <th>TOTAL</th>
+                  <th>REMOVE</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="this.common.cartLength>0">
+                <tr></tr>
+                <tr *ngFor="let item of this.common.cartItems">
+                  <td>
+                    EOC RUNESCAPE GOLD, {{item.gold}}<br>
+                    <small>Item#: <span [innerHTML]="getItemName(item.gold)"></span></small><br>
+                    <!-- <small>RS Display Name: {{item.rsName}}</small> -->
+                    <small>RS Display Name: <input type="text" name="rsName" class="rs-name" value="{{item.rsName}}" [(ngModel)]="item.rsName"></small>
+                  </td>
+                  <td>${{item.amount}}</td>
+                  <td style="width:15%;"><input type="number" name="quantity" class="form-control number-input" value="{{item.quantity}}" min="1" [(ngModel)]="item.quantity"></td>
+                  <td>${{item.quantity * item.amount}}</td>
+                  <td style="text-align:center;"><a href="javascript:void(0)" style="color:#fff;" (click)="deleteCart(item._id)"><i class="fa fa-trash"></i></a></td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="this.common.cartLength==0">
+                <p class="empty-cart">Sorry, You do not have any item in your cart.</p>
+              </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" [disabled]="!this.common.cartLength" class="btn btn-outline-light" (click)="updateCart()">Update Cart</button>
+    <button [routerLink]="['/cart']" type="button" [disabled]="!this.common.cartLength" class="btn btn-outline-light" (click)="d('Cross click')">Checkout</button>
+  </div>
+</ng-template>
+<!-- Cart Model End -->
