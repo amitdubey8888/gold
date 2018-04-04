@@ -5,7 +5,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class ApiService {
 
-  public URL = 'http://localhost:8080/api/'; // Local
+  public URL = 'http://localhost:3000/api/'; // Local
   constructor(private http: Http) { }
 
   post(subURL: string, body: any, options?: RequestOptions) {
